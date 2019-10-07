@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: db
+  username: postgres
+  password: password
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: action-cable_dev
+
+test:
+  <<: *default
+  database: action-cable_test
+
+production:
+  <<: *default
+  database: action-cable_prod
+  username: action-cable
+  password: <%= ENV['ACTION-CABLE-TUTORIAL_DATABASE_PASSWORD'] %>
